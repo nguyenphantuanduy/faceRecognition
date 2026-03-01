@@ -102,7 +102,6 @@ def preprocessing(knowFaces):
 
     return processed_faces
 
-
 # ===============================
 # Detect endpoint
 # ===============================
@@ -143,7 +142,7 @@ def detect(req: DetectRequest):
         for known_emb, known_name in knowFaces:
             sim = similarity.compute(embedding, known_emb)
             print("Similarity:", sim)
-            if sim > 0.4 and sim > best_score:
+            if sim > 0.75 and sim > best_score:
                 best_score = sim
                 best_name = known_name
 

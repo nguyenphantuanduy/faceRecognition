@@ -36,7 +36,7 @@ def main(location):
 
     tracker = DeepSort(
         max_age=30,
-        n_init=2,  # confirm nhanh hơn
+        n_init=2,  
         max_cosine_distance=0.4,
         embedder=None
     )

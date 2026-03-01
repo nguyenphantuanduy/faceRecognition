@@ -37,26 +37,27 @@ def choose_faces_and_input_info(cropped_faces):
 
 
 def main():
+    # =========================
+    # 1️⃣ Init DB
+    # =========================
     dbConfig = JSONDbConfig(
         "frdb.json",
         "images"
     )
-
     db = DbFactory.create("jsonDb", dbConfig)
 
+    # =========================
+    # 2️⃣ Nhập folder ảnh
+    # =========================
+    img_folder = input("Enter image folder path: ").strip()
 
-    img_path = input("Enter image path: ").strip()
-
-    if not os.path.exists(img_path):
-        print("Image not found.")
+    if not os.path.isdir(img_folder):
+        print("Folder not found.")
         return
 
-    img = cv2.imread(img_path)
-    if img is None:
-        print("Cannot read image.")
-        return
-
-    # ⚠ model phải được khởi tạo trước
+    # =========================
+    # 3️⃣ Init Model (chỉ load 1 lần)
+    # =========================
     modelConfig = Retina_ArcConfig(
         device="cpu",
         det_size=640,
@@ -65,27 +66,50 @@ def main():
 
     model = ModelFactory.create("retina_arc", modelConfig)
 
-    faces = detect_face(model, img)
+    # =========================
+    # 4️⃣ Duyệt toàn bộ ảnh trong folder
+    # =========================
+    all_files = os.listdir(img_folder)
+    image_files = [
+        f for f in all_files
+        if f.lower().endswith((".jpg", ".jpeg", ".png"))
+    ]
 
-    if len(faces) == 0:
-        print("No faces detected.")
+    if len(image_files) == 0:
+        print("No images found in folder.")
         return
 
-    cropped_faces = crop_face(img, faces)
+    for file_name in image_files:
+        img_path = os.path.join(img_folder, file_name)
+        print(f"\nProcessing: {file_name}")
 
-    if len(cropped_faces) == 0:
-        print("No valid faces.")
-        return
+        img = cv2.imread(img_path)
+        if img is None:
+            print("Cannot read image.")
+            continue
 
-    face_list = choose_faces_and_input_info(cropped_faces)
+        faces = detect_face(model, img)
 
-    if len(face_list) == 0:
-        print("No face selected.")
-        return
+        if len(faces) == 0:
+            print("No faces detected.")
+            continue
 
-    ids = add_face(db, face_list)
+        cropped_faces = crop_face(img, faces)
 
-    print("Saved IDs:", ids)
+        if len(cropped_faces) == 0:
+            print("No valid faces.")
+            continue
+
+        face_list = choose_faces_and_input_info(cropped_faces)
+
+        if len(face_list) == 0:
+            print("No face selected.")
+            continue
+
+        ids = add_face(db, face_list)
+        print("Saved IDs:", ids)
+
+    print("\nDone processing all images.")
 
 
 if __name__ == "__main__":

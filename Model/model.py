@@ -1,4 +1,4 @@
-from insightface.app import FaceAnalysis
+from insightface.app  import FaceAnalysis
 import torch
 import numpy as np
 from abc import ABC, abstractmethod
