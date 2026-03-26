@@ -1,0 +1,16 @@
+insightface
+onnxruntime
+opencv-python
+numpy
+deep-sort-realtime
+
+# PyTorch (CPU)
+torch
+torchvision
+torchaudio
+
+fastapi
+uvicorn
+python-multipart
+pydantic
+python-dotenv
