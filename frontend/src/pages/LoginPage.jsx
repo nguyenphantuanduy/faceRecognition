@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginAPI } from "../services/api";
+import "../styles/Login.css";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -31,21 +32,29 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h2>SmartHome Login</h2>
+    <div className="login-page">
+      <div className="login-card card">
+        <h2 className="login-title">SmartHome Login</h2>
 
-      <input
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
+        <input
+          className="login-input"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+          className="login-input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={handleLogin}>Login</button>
+        <button className="btn-primary login-btn" onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }

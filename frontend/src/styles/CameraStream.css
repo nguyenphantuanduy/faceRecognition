@@ -1,0 +1,62 @@
+/* CameraStream.css */
+.camera-stream-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff; /* nền trắng */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", sans-serif;
+  color: #0d1b2a; /* chữ xanh đậm */
+}
+
+.camera-stream-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e90ff; /* xanh da trời */
+}
+
+.camera-stream-container select {
+  padding: 8px 12px;
+  margin: 0 10px 20px 0;
+  border-radius: 8px;
+  border: 1px solid #d1d9e6;
+  background: #f0f4f8; /* nền nhạt */
+  color: #0d1b2a;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.camera-stream-container select:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+.camera-stream-container img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px solid #1e90ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back {
+  padding: 8px 16px;
+  border: none;
+  background-color: #1e90ff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background-color: #0d6efd;
+}
+
+.camera-controls {
+  margin-bottom: 20px;
+}
