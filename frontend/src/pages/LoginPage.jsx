@@ -10,7 +10,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    if (username !== "TuanDuy" || password !== "12345") {
+    if (username !== "account" || password !== "123456789") {
       alert("Invalid account");
       return;
     }

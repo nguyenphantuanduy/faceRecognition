@@ -103,6 +103,35 @@ The system can process multiple camera streams simultaneously, supporting both R
 
 ---
 
+# 📂 Project Structure
+
+```text
+faceRecognition/
+│
+├── models/                             # Models logic
+│   ├── anti_spoofing.py                # Silent Face Anti-Spoofing module
+│   └── recognition.py                  # Face recognition module
+│
+├── ai_server/                          # Backend AI server
+│   ├── modules/
+│   │   ├── face_recognition/
+│   │   │   ├── backend/
+│   │   │   │   ├── AI_backend.py       # AI server entrypoint
+│   │   │   │   ├── CAM_backend.py      # CAM backend entrypoint
+│   │   │   │
+│   ├── requirements.txt                # Python dependencies
+│
+├── frontend/                            # ReactJS frontend
+│   ├── src/
+│   │   ├── pages/                       # Login, Dashboard, Register, etc.
+│   │   ├── services/                    # Camera streaming & controls
+│   │   └── styles/                      # Styling / Face registration components
+│   ├── package.json
+│
+├── demo_img.jpg                         # Optional demo image for README
+├── README.md
+```
+
 # ⚙️ Installation & Setup
 
 ## 1️⃣ Create Virtual Environment
@@ -165,3 +194,50 @@ npm run dev
 ```
 
 Frontend runs at: http://localhost:5173 (default Vite port)
+
+# Demo
+
+## 📹 Demo Video
+
+Click the image below to watch the faceRecognition real-time demo:
+
+[![Watch the demo](demo_img.jpg)](https://drive.google.com/file/d/1aUYciKLTHvATIxVrCJjEnnTz07qJj4gi/view?usp=sharing)
+
+> **Demo Login Note:**  
+> Since the project does **not yet support account registration**, please use the following credentials to log in:
+>
+> - **Username:** `account`
+> - **Password:** `123456789`
+
+> **CAM URL Configuration:**  
+> In `ai_server/modules/face_recognition/backend/CAM_config.yaml`, update the default URL:
+>
+> ```yaml
+> url: "http://192.168.137.208:8080/video"
+> ```
+>
+> to point to your own camera stream URL.
+
+# 👨‍💻 Author
+
+- **Nguyen Phan Tuan Duy** – AI Engineer Student, Ho Chi Minh City University of Technology (HCMUT)  
+  GitHub: [https://github.com/nguyenphantuanduy](https://github.com/nguyenphantuanduy)
+
+---
+
+# 📄 License / Citation
+
+This project uses the **Silent Face Anti-Spoofing** model from MiniVision AI. If you use this model in your research or project, please cite it according to the repository instructions.
+
+- Silent Face Anti-Spoofing GitHub: [https://github.com/minivision-ai/Silent-Face-Anti-Spoofing.git](https://github.com/minivision-ai/Silent-Face-Anti-Spoofing.git)
+
+BibTeX citation (example format if you reference in papers):
+
+```bibtex
+@misc{minivision2021silentface,
+  author = {MiniVision AI},
+  title = {Silent Face Anti-Spoofing},
+  howpublished = {\url{https://github.com/minivision-ai/Silent-Face-Anti-Spoofing.git}},
+  year = {2021}
+}
+```

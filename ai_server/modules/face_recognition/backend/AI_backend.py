@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from fastapi import FastAPI, UploadFile, File, Form
 
-from models.model import ModelFactory
+from models.recognition import ModelFactory
 from models.anti_sproof import SilentFaceModel
 
 from database.CameraAccountDb import JSONCameraAccountDb
